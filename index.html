@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <style>
+        input {
+            margin: 10px 0px 0px 40px;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 7px;
+        }
+        #r {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+    <Script>
+        document.addEventListener("DOMContentLoaded", function(){
+        document.querySelector("form").onsubmit = function(){  
+        var w = document.querySelector("#w").value;
+        var h = document.querySelector("#h").value;
+        var BMI = w/(h*h)*703;
+        var B = BMI.toFixed(1);
+        document.querySelector("#B").innerHTML = B;
+        
+        if (B<18.5) {
+        document.querySelector("#S").innerHTML = "Underweight";
+        document.querySelector("#S").style.color = "blue";
+    } else if(B>=18.5 && B<24.9) {
+        document.querySelector("#S").innerHTML = "Normal weight";
+        document.querySelector("#S").style.color = "green";
+    } else {
+        document.querySelector("#S").innerHTML = "Overweight";
+        document.querySelector("#S").style.color = "red";
+    }
+    return false;
+    };
+
+        });
+
+        
+    </Script>
+</head>
+<body>
+<form>
+    <input type="number" id="h" placeholder="Your Weight: ">
+    <input type="number" id="w" placeholder="Your Height: ">
+    <input type="submit" value="Result" id="r">
+</form>
+<br><br>
+BMI:
+<span id="B"></span>
+<br><br>
+Your Weight Status: <span id="S"></span>
+</body>
+</html>
